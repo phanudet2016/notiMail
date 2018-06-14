@@ -123,13 +123,39 @@ app.get('/posts', (req, res) => {
       let dateSendCalibrateNotiFive = new Date(dateCheckCalibrate).getTime() - 432000000 // set วันที่แจ้งเตือนก่อน 5 วัน
       let dateSendCalibrateNotiThree = new Date(dateCheckCalibrate).getTime() - 259200000 // set วันที่แจ้งเตือนก่อน 3 วัน
       let dateSendCalibrateNotiOne = new Date(dateCheckCalibrate).getTime() - 86400000 // set วันที่แจ้งเตือนก่อน 1 วัน
-
+ 
+      // แจ้งเตือน Overdue
       let today = dateFormat(new Date(), "yyyy-mm-dd")
       let todayTs = new Date(today).getTime()
       if (todayTs > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
-        console.log(showdata[i].idLend, 'YAHOO')
+        // let emailOv = showdata[i].email
+        // let idLendOv = showdata[i].idLend
+        // let firstnameOv = showdata[i].firstname
+        // let lastnameOv = showdata[i].lastname
+        // let departmentOv = showdata[i].department
+        // let nameEqmOv = showdata[i].nameEqm
+        // let dateReturnOv = showdata[i].dateCheckReturn
+
+        // for (let j = 0; j < showdataUser.length; j++) {
+        //   if (showdataUser[j].status === 'admin') {
+        //     let emailOvAm = showdataUser[j].email
+        //     let firstOvAm = showdataUser[j].firstname
+        //     let lastnameOvAM = showdataUser[j].lastname   
+        //     let departmentOvAM = showdataUser[j].department
+
+        //     let HelperOptions = {
+        //       from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
+        //       to: emailAm,
+        //       subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
+        //       html: 'เรียนคุณ ' + firstnameRepairAm + ' ' + lastnameRepairAM + '<br>' + ' แผนก ' + departmentAM + '<br><br>' + nameEqmRepairAM + ' ถึงเวลาที่ต้องซ่อมบำรุงอุปกรณ์ (Maintenance) ในวันที่ ' + dateReturnRepairAM + ' กรุณานำอุปกรณ์ส่งซ่อมบำรุงด้วย'
+        //     };
+        //     sendMailRepair(HelperOptions)
+        //   }
+        // }
+        console.log(today, showdata[i].timeLengthTs)
       }
-      console.log(today, showdata[i].timeLengthTs)
+      ////////////////////////////////////////
+
       // แจ้งเตือนส่งคืนจากผู้ยืม
       if (dateNow === dateSendNotiFive || dateNow === dateSendNotiOne || dateNow === dateSendNotiThree) {
         let email = showdata[i].email
