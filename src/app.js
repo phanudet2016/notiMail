@@ -130,6 +130,7 @@ app.get('/posts', (req, res) => {
       if (today > timeLengthTs) {
         console.log(showdata[i].idLend, 'YAHOO')
       }
+      console.log('YAHOO')
       // แจ้งเตือนส่งคืนจากผู้ยืม
       if (dateNow === dateSendNotiFive || dateNow === dateSendNotiOne || dateNow === dateSendNotiThree) {
         let email = showdata[i].email
