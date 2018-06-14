@@ -124,7 +124,7 @@ app.get('/posts', (req, res) => {
       let dateSendCalibrateNotiThree = new Date(dateCheckCalibrate).getTime() - 259200000 // set วันที่แจ้งเตือนก่อน 3 วัน
       let dateSendCalibrateNotiOne = new Date(dateCheckCalibrate).getTime() - 86400000 // set วันที่แจ้งเตือนก่อน 1 วัน
  
-      // แจ้งเตือน Overdue
+      // แจ้งเตือน Overdue to ADMIN
       let today = dateFormat(new Date(), "yyyy-mm-dd")
       let todayTs = new Date(today).getTime()
       if (todayTs > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
@@ -147,12 +147,34 @@ app.get('/posts', (req, res) => {
               from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
               to: emailOvAm,
               subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
-              html: 'เรียนคุณ ' + firstOvAm + ' ' + lastnameOvAM + '<br>' + ' แผนก ' + departmentOvAM + '<br><br>' + 'เลขที่การยืม ' + idLendOv + '<br>' + 'ผู้ยืม' + firstnameOv + lastnameOv + '<br>' + nameEqmOv + 'กำหนดส่งคืนวันที่ ' + dateReturnOv + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
+              html: 'เรียนคุณ ' + firstOvAm + ' ' + lastnameOvAM + '<br>' + ' แผนก ' + departmentOvAM + '<br><br>' + 'เลขที่การยืม ' + idLendOv + '<br>' + 'ผู้ยืม ' + firstnameOv + ' ' + lastnameOv + ' ' + 'แผนก ' + departmentOv + '<br>' + nameEqmOv + ' กำหนดส่งคืนวันที่ ' + dateReturnOv + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
             };
             sendMailRepair(HelperOptions)
           }
         }
-        console.log(today, showdata[i].timeLengthTs)
+      }
+      ////////////////////////////////////////
+
+      // แจ้งเตือน Overdue to user
+      let todayU = dateFormat(new Date(), "yyyy-mm-dd")
+      let todayTsU = new Date(todaUy).getTime()
+      if (todayTsU > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
+        let emailOvU = showdata[i].email
+        let idLendOvU = showdata[i].idLend
+        let firstnameOvU = showdata[i].firstname
+        let lastnameOvU = showdata[i].lastname
+        let departmentOvU = showdata[i].department
+        let nameEqmOvU = showdata[i].nameEqm
+        let dateReturnOvU = showdata[i].dateCheckReturn
+
+        let HelperOptions = {
+          from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
+          to: emailOvU,
+          subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
+          html: 'เรียนคุณ ' + firstnameOvU + ' ' + lastnameOvU + '<br>' + ' แผนก ' + departmentOvU + '<br><br>' + 'เลขที่การยืม ' + idLendOvU + '<br>' + nameEqmOvU + ' กำหนดส่งคืนวันที่ ' + dateReturnOv + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
+        };
+        sendMailRepair(HelperOptions)
+        }
       }
       ////////////////////////////////////////
 
