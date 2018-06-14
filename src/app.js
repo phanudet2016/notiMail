@@ -128,30 +128,30 @@ app.get('/posts', (req, res) => {
       let today = dateFormat(new Date(), "yyyy-mm-dd")
       let todayTs = new Date(today).getTime()
       if (todayTs > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
-        // let emailOv = showdata[i].email
-        // let idLendOv = showdata[i].idLend
-        // let firstnameOv = showdata[i].firstname
-        // let lastnameOv = showdata[i].lastname
-        // let departmentOv = showdata[i].department
-        // let nameEqmOv = showdata[i].nameEqm
-        // let dateReturnOv = showdata[i].dateCheckReturn
+        let emailOv = showdata[i].email
+        let idLendOv = showdata[i].idLend
+        let firstnameOv = showdata[i].firstname
+        let lastnameOv = showdata[i].lastname
+        let departmentOv = showdata[i].department
+        let nameEqmOv = showdata[i].nameEqm
+        let dateReturnOv = showdata[i].dateCheckReturn
 
-        // for (let j = 0; j < showdataUser.length; j++) {
-        //   if (showdataUser[j].status === 'admin') {
-        //     let emailOvAm = showdataUser[j].email
-        //     let firstOvAm = showdataUser[j].firstname
-        //     let lastnameOvAM = showdataUser[j].lastname   
-        //     let departmentOvAM = showdataUser[j].department
+        for (let j = 0; j < showdataUser.length; j++) {
+          if (showdataUser[j].status === 'admin') {
+            let emailOvAm = showdataUser[j].email
+            let firstOvAm = showdataUser[j].firstname
+            let lastnameOvAM = showdataUser[j].lastname   
+            let departmentOvAM = showdataUser[j].department
 
-        //     let HelperOptions = {
-        //       from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
-        //       to: emailAm,
-        //       subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
-        //       html: 'เรียนคุณ ' + firstnameRepairAm + ' ' + lastnameRepairAM + '<br>' + ' แผนก ' + departmentAM + '<br><br>' + nameEqmRepairAM + ' ถึงเวลาที่ต้องซ่อมบำรุงอุปกรณ์ (Maintenance) ในวันที่ ' + dateReturnRepairAM + ' กรุณานำอุปกรณ์ส่งซ่อมบำรุงด้วย'
-        //     };
-        //     sendMailRepair(HelperOptions)
-        //   }
-        // }
+            let HelperOptions = {
+              from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
+              to: emailOvAm,
+              subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
+              html: 'เรียนคุณ ' + firstOvAm + ' ' + lastnameOvAM + '<br>' + ' แผนก ' + departmentOvAM + '<br><br>' + 'เลขที่การยืม ' + idLendOv + '<br>' + 'ผู้ยืม' + firstnameOv + lastnameOv + '<br>' + nameEqmOv + 'กำหนดส่งคืนวันที่ ' + dateReturn + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
+            };
+            sendMailRepair(HelperOptions)
+          }
+        }
         console.log(today, showdata[i].timeLengthTs)
       }
       ////////////////////////////////////////
