@@ -126,7 +126,7 @@ app.get('/posts', (req, res) => {
 
       let today = dateFormat(new Date(), "yyyy-mm-dd")
       let todayTs = new Date(today).getTime()
-      if (today > showdata[i].timeLengthTs) {
+      if (todayTs > showdata[i].timeLengthTs) {
         console.log(showdata[i].idLend, 'YAHOO')
       }
       console.log(today, showdata[i].timeLengthTs)
