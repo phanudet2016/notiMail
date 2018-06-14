@@ -157,7 +157,7 @@ app.get('/posts', (req, res) => {
 
       // แจ้งเตือน Overdue to user
       let todayU = dateFormat(new Date(), "yyyy-mm-dd")
-      let todayTsU = new Date(todaUy).getTime()
+      let todayTsU = new Date(todayU).getTime()
       if (todayTsU > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
         let emailOvU = showdata[i].email
         let idLendOvU = showdata[i].idLend
