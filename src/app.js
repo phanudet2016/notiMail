@@ -127,7 +127,7 @@ app.get('/posts', (req, res) => {
       let today = dateFormat(new Date(), "yyy-mm-dd")
       let todayTs = new Date(today).getTime()
       let timeLengthTs = showdata[i].timeLengthTs
-      if (timeLengthTs > today) {
+      if (today > timeLengthTs) {
         console.log(showdata[i].idLend, 'YAHOO')
       }
       // แจ้งเตือนส่งคืนจากผู้ยืม
