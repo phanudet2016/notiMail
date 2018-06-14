@@ -147,7 +147,7 @@ app.get('/posts', (req, res) => {
               from: '"ADMIN_HOSPITAL" <admin_hospital@admin.com>',
               to: emailOvAm,
               subject: 'แจ้งเตือนอุปกรณ์ที่ไม่ส่งคืนตามกำหนด',
-              html: 'เรียนคุณ ' + firstOvAm + ' ' + lastnameOvAM + '<br>' + ' แผนก ' + departmentOvAM + '<br><br>' + 'เลขที่การยืม ' + idLendOv + '<br>' + 'ผู้ยืม' + firstnameOv + lastnameOv + '<br>' + nameEqmOv + 'กำหนดส่งคืนวันที่ ' + dateReturn + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
+              html: 'เรียนคุณ ' + firstOvAm + ' ' + lastnameOvAM + '<br>' + ' แผนก ' + departmentOvAM + '<br><br>' + 'เลขที่การยืม ' + idLendOv + '<br>' + 'ผู้ยืม' + firstnameOv + lastnameOv + '<br>' + nameEqmOv + 'กำหนดส่งคืนวันที่ ' + dateReturnOv + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
             };
             sendMailRepair(HelperOptions)
           }
