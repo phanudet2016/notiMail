@@ -174,7 +174,6 @@ app.get('/posts', (req, res) => {
           html: 'เรียนคุณ ' + firstnameOvU + ' ' + lastnameOvU + '<br>' + ' แผนก ' + departmentOvU + '<br><br>' + 'เลขที่การยืม ' + idLendOvU + '<br>' + nameEqmOvU + ' กำหนดส่งคืนวันที่ ' + dateReturnOv + ' ตอนนี้เลยกำหนดส่งคืนแล้ว '
         };
         sendMailRepair(HelperOptions)
-        }
       }
       ////////////////////////////////////////
 
