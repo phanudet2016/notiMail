@@ -125,9 +125,10 @@ app.get('/posts', (req, res) => {
       let dateSendCalibrateNotiOne = new Date(dateCheckCalibrate).getTime() - 86400000 // set วันที่แจ้งเตือนก่อน 1 วัน
  
       // แจ้งเตือน Overdue to ADMIN
-      let today = dateFormat(new Date(), "yyyy-mm-dd")
+      let today = dateFormat(new Date(), "m/d/yyyy")
+      let timeLengthTs =  new Date(showdata[i].dateCheckReturn).getTime()
       let todayTs = new Date(today).getTime()
-      if (todayTs > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
+      if (todayTs > timeLengthTs && showdata[i].returnedEqm === 0) {
         let emailOv = showdata[i].email
         let idLendOv = showdata[i].idLend
         let firstnameOv = showdata[i].firstname
@@ -156,9 +157,10 @@ app.get('/posts', (req, res) => {
       ////////////////////////////////////////
 
       // แจ้งเตือน Overdue to user
-      let todayU = dateFormat(new Date(), "yyyy-mm-dd")
+      let todayU = dateFormat(new Date(), "m/d/yyyy")
+      let timeLengthTsU =  new Date(showdata[i].dateCheckReturn).getTime()
       let todayTsU = new Date(todayU).getTime()
-      if (todayTsU > showdata[i].timeLengthTs && showdata[i].returnedEqm === 0) {
+      if (todayTsU > timeLengthTsU && showdata[i].returnedEqm === 0) {
         let emailOvU = showdata[i].email
         let idLendOvU = showdata[i].idLend
         let firstnameOvU = showdata[i].firstname
